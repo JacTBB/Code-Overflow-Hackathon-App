@@ -11,6 +11,7 @@ export default function Index() {
   const [PedomaterAvailability, SetPedomaterAvailability] = useState("");
   const [StepCount, SetStepCount] = useState(0);
 
+  const CurrentDate = new Date().toDateString()
   const StepGoal = 10
   var Dist = StepCount / 1300;
   var DistanceCovered: any = Dist.toFixed(2);
@@ -34,30 +35,36 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 40}}>Summary</Text>
+      <Text style={{color: 'white', fontSize: 15}}>{CurrentDate}</Text>
+      <Text style={{color: 'white', fontSize: 40}}>Summary</Text>
 
-      <View>
-        <Text style={{fontSize: 30}}>Activity</Text>
+      <View style={{height: 300}}>
+        <Text style={{color: 'white', fontSize: 30}}>Activity</Text>
 
-        {/* FIXME: Over step goal overflows progress bar */}
-        <CircularProgress
-          value={StepCount}
-          maxValue={StepGoal}
-          radius={180}
-          duration={1000}
-          activeStrokeColor={"#26c010"}
-          inActiveStrokeColor={"#343434"}
-          inActiveStrokeOpacity={0.5}
-          inActiveStrokeWidth={40}
-          activeStrokeWidth={40}
-          title={"Steps"}
-          titleColor={"#000"}
-          titleStyle={{ fontWeight: "bold" }}
-          titleFontSize={30}
-        />
+        <View style={{flex: 1, alignItems: 'center'}}>
+          {/* FIXME: Over step goal overflows progress bar */}
+          <CircularProgress
+            value={StepCount}
+            maxValue={StepGoal}
+            radius={120}
+            duration={1000}
+            activeStrokeColor={"#26c010"}
+            inActiveStrokeColor={"#446444"}
+            inActiveStrokeOpacity={0.5}
+            inActiveStrokeWidth={40}
+            activeStrokeWidth={40}
+            title={"Steps"}
+            titleColor={"white"}
+            titleStyle={{ fontWeight: "bold" }}
+            titleFontSize={30}
+          />
+        </View>
       </View>
 
-      <Text>Open up App.tsx to start working on your app!!</Text>
+      <View>
+        <Text style={{color: 'white', fontSize: 30}}>Quests</Text>
+        <Text style={{color: 'white'}}>Open up App.tsx to start working on your app!!</Text>
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -69,7 +76,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
+    backgroundColor: "#111",
+    paddingHorizontal: 10,
   },
 });
