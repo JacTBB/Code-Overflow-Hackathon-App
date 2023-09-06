@@ -1,4 +1,4 @@
-import { Stack, Link, useFocusEffect  } from 'expo-router';
+import { Stack, Link, useFocusEffect } from 'expo-router';
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
@@ -53,13 +53,24 @@ export default function Quests() {
 
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 30, fontWeight: 'bold'}}>My Quests</Text>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: '#b0e9be' },
+          headerTintColor: '#293241',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerTitle: "FitQuest - Quests",
+        }}
+      />
+
+      <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white'}}>My Quests</Text>
       <FlatList
         data={MyQuestsData}
         renderItem={({item}) => <MyQuest Quest={item} />}
       />
       
-      <Text style={{fontSize: 30, fontWeight: 'bold'}}>Find Quests</Text>
+      <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white'}}>Find Quests</Text>
       <FlatList
         data={FindQuestsData}
         renderItem={({item}) => <FindQuest Quest={item} />}
@@ -75,7 +86,7 @@ export default function Quests() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#222",
     paddingHorizontal: 10,
   },
 

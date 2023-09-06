@@ -1,20 +1,23 @@
 // UNFINISHED
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
 
 import PocketBase from "pocketbase";
 
 export default function Login() {
-  const pb = new PocketBase("127.0.0.1:8090");
+  const pb = new PocketBase("https://pocketbase-codeoverflow.jactbb.com");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     const authData = await pb.admins.authWithPassword(
-      "test@example.com",
-      "1234567890"
+      "codeoverflow@jactbb.com",
+      "felix@punggol!"
     );
+    console.log(authData)
+    console.log(pb.authStore.isValid);
+    console.log(pb.authStore);
   };
 
   return (
@@ -26,6 +29,9 @@ export default function Login() {
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
+      <Pressable onPress={handleLogin}>
+        <Text>Login</Text>
+      </Pressable>
     </View>
   );
 }

@@ -1,3 +1,4 @@
+import { Stack } from 'expo-router';
 import { useEffect, useState, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
@@ -51,13 +52,24 @@ export default function Steps() {
 
   return (
     <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: '#b0e9be' },
+          headerTintColor: '#293241',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerTitle: "FitQuest - Steps",
+        }}
+      />
+
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>
+        <Text style={{ color: 'white' }}>
           Is Pedometer available on the device : {PedomaterAvailability}
         </Text>
       </View>
 
-      <View style={{ flex: 4 }}>
+      <View style={{ flex: 3 }}>
         {/* FIXME: Over step goal overflows progress bar */}
         <CircularProgress
           value={StepCount}
@@ -70,7 +82,7 @@ export default function Steps() {
           inActiveStrokeWidth={40}
           activeStrokeWidth={40}
           title={"Steps"}
-          titleColor={"#000"}
+          titleColor={"white"}
           titleStyle={{ fontWeight: "bold" }}
           titleFontSize={30}
         />
@@ -78,29 +90,23 @@ export default function Steps() {
 
       <View style={{ flex: 1 }}>
         <PaperProvider>
-          <Text>6 September 2023</Text>
+          <Text style={{ color: 'white' }}>6 September 2023</Text>
           <ProgressBar progress={0.5} color="#26c010" />
         </PaperProvider>
       </View>
 
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <View style={{ flex: 1 }}>
-          <Text>
-            Target : {StepGoal} steps ({(StepGoal / 1300).toFixed(1)} km)
-          </Text>
-        </View>
+      <View style={{ flex: 1 }}>
+        <Text style={{ color: 'white' }}>
+          Target : {StepGoal} steps ({(StepGoal / 1300).toFixed(1)} km)
+        </Text>
 
-        <View style={{ flex: 1 }}>
-          <Text>
-            Distance Covered : {DistanceCovered} km
-          </Text>
-        </View>
+        <Text style={{ color: 'white' }}>
+          Distance Covered : {DistanceCovered} km
+        </Text>
 
-        <View style={{ flex: 1 }}>
-          <Text>
-            Calories Burnt : {caloriesBurnt}
-          </Text>
-        </View>
+        <Text style={{ color: 'white' }}>
+          Calories Burnt : {caloriesBurnt}
+        </Text>
       </View>
 
       <StatusBar style="auto" />
@@ -113,7 +119,7 @@ export default function Steps() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#222",
     alignItems: "center",
     justifyContent: "center",
   },

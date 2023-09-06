@@ -52,6 +52,17 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: '#b0e9be' },
+          headerTintColor: '#293241',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerTitle: "FitQuest - Home",
+        }}
+      />
+
       <Text style={{color: 'white', fontSize: 15}}>{CurrentDate}</Text>
       <Text style={{color: 'white', fontSize: 40}}>Summary</Text>
 
@@ -93,7 +104,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111",
+    backgroundColor: "#222",
     paddingHorizontal: 10,
   },
 });
