@@ -35,10 +35,6 @@ export const QuestsData: Record<string, QuestsDataType> = {
       ["rest", 10],
       ["pushup with rotation", 30],
       ["rest", 10],
-      ["side plank left", 30],
-      ["rest", 10],
-      ["side plank right", 30],
-      ["rest", 10],
       ["squats", 30],
     ]
   },
@@ -48,10 +44,10 @@ export const QuestsData: Record<string, QuestsDataType> = {
     description: 'Description',
     card_image: '(img_url)',
     estimated_duration: '30 mins',
-    tasks_type: 'long',
+    tasks_type: 'short',
     tasks: [
-      ["squats", 100],
-      ["running", 60],
+      ["squats", 30],
+      ["high knees", 30],
     ]
   },
   '3': {
@@ -60,7 +56,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     description: 'Description',
     card_image: '(img_url)',
     estimated_duration: '30 mins',
-    tasks_type: 'long',
+    tasks_type: 'short',
     tasks: [
       ["squats", 100],
       ["running", 60],
