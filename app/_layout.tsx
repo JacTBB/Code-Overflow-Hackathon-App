@@ -1,8 +1,12 @@
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Stack } from 'expo-router';
+import { StyleSheet, Text, View } from "react-native";
+
+
 
 export default function AppLayout() {
   return (
-    <SafeAreaView>
-    </SafeAreaView>
+    <Stack>
+      <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+    </Stack>
   );
 }

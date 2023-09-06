@@ -1,14 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
-export default function Index() {
+
+
+export default function Quests() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!!</Text>
+      <Text>Quests page!</Text>
       <StatusBar style="auto" />
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
