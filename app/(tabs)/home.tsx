@@ -1,37 +1,54 @@
 import { Stack } from 'expo-router';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Pedometer } from "expo-sensors";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import CircularProgress from "react-native-circular-progress-indicator";
 
 
 
-export default function Index() {
+export default function Home() {
   const [PedomaterAvailability, SetPedomaterAvailability] = useState("");
   const [StepCount, SetStepCount] = useState(0);
+  const [PreviousStepCount, SetPreviousStepCount] = useState(0);
+  const [SessionStepCount, SetSessionStepCount] = useState(0);
 
+  var SaveStepsTimeout: any
   const CurrentDate = new Date().toDateString()
-  const StepGoal = 10
+  const StepGoal = 100
   var Dist = StepCount / 1300;
   var DistanceCovered: any = Dist.toFixed(2);
   var cal = DistanceCovered * 60;
   var caloriesBurnt = cal.toFixed(2);
 
-  const subscribe = () => {
+  (async () => {
+    if (PreviousStepCount == 0) {
+      const StorageStepCount = (await AsyncStorage.getItem('StepCount')) || 0
+      SetPreviousStepCount(Number(StorageStepCount))
+      SetStepCount(Number(StorageStepCount))
+    }
+  })()
+
+  useEffect(() => {
+    function SaveSteps() {
+      SaveStepsTimeout = setTimeout(async () => {
+        await AsyncStorage.setItem('StepCount', (PreviousStepCount + SessionStepCount).toString())
+      }, 5000)
+    }
+
     Pedometer.watchStepCount((result) => {
-      SetStepCount(result.steps);
+      SetSessionStepCount(result.steps)
+      SetStepCount(PreviousStepCount + result.steps)
+      clearTimeout(SaveStepsTimeout)
+      SaveSteps()
     });
 
     Pedometer.isAvailableAsync().then(
       (result) => SetPedomaterAvailability(String(result)),
       (error) => SetPedomaterAvailability(error)
     );
-  };
-
-  useEffect(() => {
-    subscribe();
-  }, []);
+  });
 
   return (
     <View style={styles.container}>
