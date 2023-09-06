@@ -1,19 +1,9 @@
-import { Stack, Link } from 'expo-router';
+import { Stack, Link, useFocusEffect  } from 'expo-router';
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { QuestsDataType, QuestsData } from "../../components/QuestsData";
-
-const MyQuests = [1]
-const MyQuestsData: QuestsDataType[] = []
-MyQuests.forEach((id) => {
-  MyQuestsData.push(QuestsData[id])
-})
-
-const FindQuests = [2,3]
-const FindQuestsData: QuestsDataType[] = []
-FindQuests.forEach((id) => {
-  FindQuestsData.push(QuestsData[id])
-})
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -40,6 +30,27 @@ const FindQuest = ({Quest}: QuestProps) => (
 
 
 export default function Quests() {
+  const [MyQuestsStorageString, setMyQuestsStorageString] = useState('')
+  
+  useFocusEffect(() => {
+    (async () => {
+      const MyQuestsStorageStringData = await AsyncStorage.getItem('MyQuests')
+      setMyQuestsStorageString(`${MyQuestsStorageStringData ? MyQuestsStorageStringData : ''}`)
+    })()
+  })
+
+  const MyQuestsStorage = MyQuestsStorageString ? JSON.parse(MyQuestsStorageString) : []
+  const MyQuestsData = []
+  const FindQuestsData = []
+  for (const Quest in QuestsData) {
+    if (MyQuestsStorage[`${Quest}`]) {
+      MyQuestsData.push(QuestsData[Quest])
+    }
+    else {
+      FindQuestsData.push(QuestsData[Quest])
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={{fontSize: 30, fontWeight: 'bold'}}>My Quests</Text>
