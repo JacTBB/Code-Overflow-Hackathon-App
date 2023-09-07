@@ -3,49 +3,58 @@ export type QuestsDataType = {
   title: string;
   description: string;
   card_image: string;
+  workout_video: string;
   estimated_duration: string;
   tasks_type: string;
   tasks: any;
 };
 
+export const TaskVideos: Record<string, string> = {
+  "Rest": "https://ncs.jactbb.com/s/4nKzwra2LY3KS6X/download",
+}
+
 export const QuestsData: Record<string, QuestsDataType> = {
   '1': {
     id: '1',
-    title: '5 Min HITT Workout',
-    description: 'Cardio HIIT Workout 40s/20s intervals https://youtu.be/XGtjACeyHtc?si=56O2-2YO_0_HtrA8',
-    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    title: '5 Min HIIT Workout',
+    description: 'Cardio HIIT Workout 40s/20s intervals',
+    card_image: 'https://img.livestrong.com/375/media-storage/contentlab-data/7/30/6455cc55a59445658158eeaf2ebf9435.jpg',
+    workout_video: 'https://ncs.jactbb.com/s/mFJRSgqDKJYLrYi/download',
     estimated_duration: '5 mins',
     tasks_type: 'short',
     tasks: [
-      ["jumping squat", 40],
-      ["rest", 20],
-      ["frog jump", 40],
-      ["rest", 20],
-      ["vertical jump", 40],
-      ["rest", 20],
-      ["high knees", 40],
-      ["rest", 20],
-      ["jumping jack plank", 40],
+      ["Rest", 3],
+      ["Jumping Squat", 38],
+      ["Rest", 18],
+      ["Frog Jump", 38],
+      ["Rest", 18],
+      ["Vertical Jump", 38],
+      ["Rest", 18],
+      ["High Knees", 38],
+      ["Rest", 18],
+      ["Jumping Jack Plank", 38],
     ]
   },
   '2': {
     id: '2',
     title: '5 Min Tabata',
-    description: '5 Min Full Body Workout https://youtu.be/Tz9d7By2ytQ?si=Hoh26kfB1a8MLhBJ',
+    description: '5 Min Full Body Workout',
     card_image: 'https://www.pngitem.com/pimgs/m/349-3490656_learn-these-tabata-workout-physical-activity-clipart-hd.png',
+    workout_video: 'https://ncs.jactbb.com/s/yF3Pofo6JgDRgDn/download',
     estimated_duration: '5 mins',
     tasks_type: 'short',
     tasks: [
-      ["squats", 30],
-      ["cross back lunge", 30],
-      ["superman pushup", 30],
-      ["side kick (left)", 30],
-      ["side kick (right)", 30],
-      ["side plank rotation (right)", 30],
-      ["side plank rotation (left)", 30],
-      ["leg raise", 30],
-      ["bicycle", 30],
-      ["toe touch", 30],
+      ["Rest", 12],
+      ["Jumping Jacks", 28],
+      ["Mountain Climbers", 28],
+      ["Squat Side Kick", 28],
+      ["Side Jumps", 28],
+      ["Push Ups", 28],
+      ["Plank Push Ups", 28],
+      ["Side Leg Raise (Left)", 28],
+      ["Side Leg Raise (Right)", 28],
+      ["T Rotation", 28],
+      ["Hip Bridge", 28],
     ]
   },
   '3': {
@@ -53,29 +62,30 @@ export const QuestsData: Record<string, QuestsDataType> = {
     title: '10 Min HITT Cardio',
     description: 'HITT Cardio Workout',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    workout_video: '',
     estimated_duration: '10 mins',
     tasks_type: 'short',
     tasks: [
-      ["high knees", 45],
-      ["rest", 15],
-      ["mountain climbers", 45],
-      ["rest", 15],
-      ["burpees", 45],
-      ["rest", 15],
-      ["high side plank", 45],
-      ["rest", 15],
-      ["russian twist", 45],
-      ["rest", 15],
-      ["jumping lunges", 45],
-      ["rest", 15],
-      ["side to side push up", 45],
-      ["rest", 15],
-      ["jumping jacks", 45],
-      ["rest", 15],
-      ["ins and outs", 45],
-      ["rest", 15],
-      ["side to side jump squad", 45],
-      ["rest", 15],
+      ["High Knees", 45],
+      ["Rest", 15],
+      ["Mountain Climbers", 45],
+      ["Rest", 15],
+      ["Burpees", 45],
+      ["Rest", 15],
+      ["High Side Plank", 45],
+      ["Rest", 15],
+      ["Russian Twist", 45],
+      ["Rest", 15],
+      ["Jumping Lunges", 45],
+      ["Rest", 15],
+      ["Side To Side Push Up", 45],
+      ["Rest", 15],
+      ["Jumping Jacks", 45],
+      ["Rest", 15],
+      ["Ins And Outs", 45],
+      ["Rest", 15],
+      ["Side To Side Jump Squad", 45],
+      ["Rest", 15],
     ]
   },
   '4': {
@@ -83,11 +93,12 @@ export const QuestsData: Record<string, QuestsDataType> = {
     title: 'Quest 4',
     description: 'Description',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    workout_video: '',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
-      ["squats", 100],
-      ["running", 60],
+      ["Squats", 100],
+      ["Running", 60],
     ]
   },
   '5': {
@@ -95,11 +106,12 @@ export const QuestsData: Record<string, QuestsDataType> = {
     title: 'Quest 5',
     description: 'Description',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    workout_video: '',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
-      ["squats", 100],
-      ["running", 60],
+      ["Squats", 100],
+      ["Running", 60],
     ]
   },
   '6': {
@@ -107,11 +119,12 @@ export const QuestsData: Record<string, QuestsDataType> = {
     title: 'Quest 6',
     description: 'Description',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    workout_video: '',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
-      ["squats", 100],
-      ["running", 60],
+      ["Squats", 100],
+      ["Running", 60],
     ]
   },
   '7': {
@@ -119,11 +132,12 @@ export const QuestsData: Record<string, QuestsDataType> = {
     title: 'Quest 7',
     description: 'Description',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    workout_video: '',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
-      ["squats", 100],
-      ["running", 60],
+      ["Squats", 100],
+      ["Running", 60],
     ]
   },
 }

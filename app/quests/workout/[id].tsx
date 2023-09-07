@@ -1,9 +1,10 @@
 import { Stack, useGlobalSearchParams, useNavigation } from 'expo-router';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Audio } from 'expo-av';
-import { QuestsDataType, QuestsData } from "../../../components/QuestsData";
+import { Audio, ResizeMode } from 'expo-av';
+import VideoPlayer from 'expo-video-player'
+import { QuestsDataType, QuestsData, TaskVideos } from "../../../components/QuestsData";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -46,7 +47,7 @@ export default function Workout() {
           if ((taskId+1) >= QuestData.tasks.length) return
           setTaskId(taskId+1)
           setTimeLeft(QuestData.tasks[`${taskId+1}`][1])
-          if (QuestData.tasks[`${taskId+1}`][0] != 'rest') {
+          if (QuestData.tasks[`${taskId+1}`][0] != 'Rest') {
             setTaskId_NoRest(taskId_NoRest+1)
           }
           (async () => {
@@ -58,7 +59,7 @@ export default function Workout() {
       else {
         setTimeLeft(timeLeft - 1);
       }
-    }, 1);
+    }, 1000);
     return () => clearInterval(intervalId);
   });
 
@@ -87,6 +88,19 @@ export default function Workout() {
       <Text>Task: {Number(taskId_NoRest)+1}/{TotalTasks}</Text>
       <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20}}>{QuestData.tasks[`${taskId}`][0]}</Text>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>{timeLeft} seconds</Text>
+
+      <View style={{marginTop: 20}}>
+        <VideoPlayer
+          videoProps={{
+            shouldPlay: true,
+            resizeMode: ResizeMode.CONTAIN,
+            source: {
+              uri: `${QuestData.workout_video || TaskVideos[QuestData.title]}`,
+            },
+          }}
+          style={{height: 300}}
+        />
+      </View>
 
       <StatusBar style="auto" />
     </View>
