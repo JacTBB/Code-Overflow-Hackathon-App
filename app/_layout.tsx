@@ -1,12 +1,11 @@
-import { Stack } from 'expo-router';
-import { StyleSheet, Text, View } from "react-native";
+import { Slot } from 'expo-router';
+import { SessionProvider } from '../auth/auth';
 
-
-
-export default function AppLayout() {
+export default function RootLayout() {
+  // Set up the auth context and render our layout inside of it.
   return (
-    <Stack>
-      <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-    </Stack>
+    <SessionProvider>
+      <Slot />
+    </SessionProvider>
   );
 }
