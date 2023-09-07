@@ -6,10 +6,11 @@ import {
   TextInput,
   View,
   Pressable,
-  Image,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import { Image } from "expo-image"
+
 import { useAuth } from "../../auth/auth";
 
 export default function Register() {
@@ -28,7 +29,7 @@ export default function Register() {
         <Image
           style={styles.image}
           source={require("../../assets/images/fitquest.png")}
-          resizeMode="contain"
+          contentFit="contain"
         />
         <TextInput
           style={styles.textInput}
