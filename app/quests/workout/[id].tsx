@@ -30,7 +30,7 @@ export default function Workout() {
       setTimeout(async () => {
         var CompletedQuestsString: any = await AsyncStorage.getItem('CompletedQuests')
         var CompletedQuests = CompletedQuestsString ? JSON.parse(CompletedQuestsString) : {}
-        CompletedQuests[`${id}`] = 'true'
+        CompletedQuests[`${id}`] = `${QuestData.points}`
         CompletedQuestsString = JSON.stringify(CompletedQuests)
         await AsyncStorage.setItem('CompletedQuests', CompletedQuestsString)
         setCompleted(1)
@@ -59,7 +59,7 @@ export default function Workout() {
       else {
         setTimeLeft(timeLeft - 1);
       }
-    }, 1000);
+    }, 1);
     return () => clearInterval(intervalId);
   });
 

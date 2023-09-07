@@ -2,6 +2,7 @@ export type QuestsDataType = {
   id: string;
   title: string;
   description: string;
+  points: string;
   card_image: string;
   workout_video: string;
   estimated_duration: string;
@@ -14,6 +15,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '1',
     title: '5 Min HIIT Workout',
     description: 'Cardio HIIT Workout 40s/20s intervals',
+    points: '100',
     card_image: 'https://img.livestrong.com/375/media-storage/contentlab-data/7/30/6455cc55a59445658158eeaf2ebf9435.jpg',
     workout_video: 'https://ncs.jactbb.com/s/mFJRSgqDKJYLrYi/download',
     estimated_duration: '5 mins',
@@ -35,6 +37,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '2',
     title: '5 Min Tabata',
     description: '5 Min Full Body Workout',
+    points: '100',
     card_image: 'https://www.pngitem.com/pimgs/m/349-3490656_learn-these-tabata-workout-physical-activity-clipart-hd.png',
     workout_video: 'https://ncs.jactbb.com/s/yF3Pofo6JgDRgDn/download',
     estimated_duration: '5 mins',
@@ -57,6 +60,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '3',
     title: '10 Min HITT Cardio',
     description: 'HITT Cardio Workout',
+    points: '500',
     card_image: 'https://media.istockphoto.com/id/1225999034/vector/fitness-instructor-service-flat-color-vector-illustration.jpg?s=612x612&w=0&k=20&c=D1PzDVWE5IVVHrYc5yYgLYr8pQpCmdugeZp_BQHhAJA=',
     workout_video: 'https://ncs.jactbb.com/s/9qpHyc68AMj9jB9/download',
     estimated_duration: '10 mins',
@@ -88,6 +92,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '4',
     title: '4 Min Tabata',
     description: '4 Min Fat Burning Workout',
+    points: '100',
     card_image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2021_07/1676198/tabata-training-te-main-210218.jpg',
     workout_video: 'https://ncs.jactbb.com/s/Ft8xNt3M8P6Jj35/download',
     estimated_duration: '4 mins',
@@ -115,6 +120,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '5',
     title: 'Welcome Quest',
     description: 'Description',
+    points: '50',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
     workout_video: 'https://ncs.jactbb.com/s/NfDqBLCXwKtiGNo/download',
     estimated_duration: '1 min',
