@@ -2,6 +2,7 @@ import { Stack, useGlobalSearchParams, useNavigation } from 'expo-router';
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Audio } from 'expo-av';
 import { QuestsDataType, QuestsData } from "../../../components/QuestsData";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -16,6 +17,12 @@ export default function Workout() {
   const [taskId, setTaskId] = useState(Number(task));
   const [timeLeft, setTimeLeft] = useState(QuestData.tasks[`${taskId}`][1]);
   const [completed, setCompleted] = useState(0)
+
+  async function playWorkoutSound() {
+    const { sound } = await Audio.Sound.createAsync( require('../../../assets/audio/beep.wav')
+    );
+    await sound.playAsync();
+  }
 
   useEffect(() => {
     if (((taskId+1) >= QuestData.tasks.length)&&(timeLeft == 0)) {
@@ -42,6 +49,10 @@ export default function Workout() {
           if (QuestData.tasks[`${taskId+1}`][0] != 'rest') {
             setTaskId_NoRest(taskId_NoRest+1)
           }
+          (async () => {
+            // @ts-ignore
+            playWorkoutSound()
+          })()
         // }
       }
       else {
@@ -58,9 +69,7 @@ export default function Workout() {
       <View style={styles.container}>
         <Stack.Screen options={{ title: QuestData.title }} />
 
-        <Text>Task Doing page!</Text>
-        <Text>Title: {QuestData.title}</Text>
-        <Text>Tasks Type: {QuestData.tasks_type}</Text>
+        <Text style={{fontSize: 30}}>{QuestData.title}</Text>
         <Text>Task: {Number(taskId_NoRest)+1}/{TotalTasks}</Text>
         <Text>Quest Completed!</Text>
         <Text>Redirecting...</Text>
@@ -74,13 +83,10 @@ export default function Workout() {
     <View style={styles.container}>
       <Stack.Screen options={{ title: QuestData.title }} />
 
-      <Text>Task Doing page!</Text>
-      <Text>Title: {QuestData.title}</Text>
-      <Text>Tasks Type: {QuestData.tasks_type}</Text>
+      <Text style={{fontSize: 30}}>{QuestData.title}</Text>
       <Text>Task: {Number(taskId_NoRest)+1}/{TotalTasks}</Text>
-      <Text>Task Title: {QuestData.tasks[`${taskId}`][0]}</Text>
-      <Text>Task Total Seconds: {QuestData.tasks[`${taskId}`][1]}</Text>
-      <Text>Task Remaining Seconds: {timeLeft}</Text>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20}}>{QuestData.tasks[`${taskId}`][0]}</Text>
+      <Text style={{fontSize: 20, fontWeight: 'bold'}}>{timeLeft} seconds</Text>
 
       <StatusBar style="auto" />
     </View>

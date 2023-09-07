@@ -114,9 +114,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
-    textShadowColor: 'gray',
+    textShadowColor: 'black',
     textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 5,
+    textShadowRadius: 10,
   },
 
   QuestButton: {

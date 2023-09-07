@@ -13,6 +13,11 @@ export default function Quest() {
   const QuestData = QuestsData[`${id}`]
   const [MyQuest, setMyQuest] = useState('false')
   const [completedQuest, setCompletedQuest] = useState('false')
+
+  var ButtonText = "Begin Workout"
+  if (completedQuest == 'Yes') {
+    ButtonText = "Redo Workout"
+  }
   
   useEffect(() => {
     (async () => {
@@ -22,7 +27,7 @@ export default function Quest() {
 
       const CompletedQuestsString: any = await AsyncStorage.getItem('CompletedQuests')
       const CompletedQuests = CompletedQuestsString ? JSON.parse(CompletedQuestsString) : {}
-      setCompletedQuest(CompletedQuests[`${id}`] ? 'true' : 'false')
+      setCompletedQuest(CompletedQuests[`${id}`] ? 'Yes' : 'No')
     })()
   });
 
@@ -40,16 +45,21 @@ export default function Quest() {
       <View style={styles.container}>
         <Stack.Screen options={{ title: QuestData.title }} />
 
-        <Text>Quest Info page!</Text>
-        <Text>QuestId: {QuestData.id}</Text>
-        <Text>Title: {QuestData.title}</Text>
-        <Text>Description: {QuestData.description}</Text>
+        <Text style={{fontSize: 30}}>{QuestData.title}</Text>
         <Text>Duration: {QuestData.estimated_duration}</Text>
-        <Text>Tasks Type: {QuestData.tasks_type}</Text>
-        <Text>Tasks: {QuestData.tasks}</Text>
-        <Pressable style={styles.TaskButton} onPress={GetQuest}>
-          <Text>Get Quest</Text>
-        </Pressable>
+        <Text style={{margin: 10}}>{QuestData.description}</Text>
+
+        <Text style={{fontSize: 16, textDecorationLine: 'underline'}}>Tasks</Text>
+        {QuestData.tasks.map((Quest: any) => (
+          <Text>{Quest[0]} - {Quest[1]} secs</Text>
+        ))}
+
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <Link href={'/quests'} style={styles.TaskButton}>Back</Link>
+          <Pressable style={styles.TaskButton} onPress={GetQuest}>
+            <Text>Get Quest</Text>
+          </Pressable>
+        </View>
 
         <StatusBar style="auto" />
       </View>
@@ -60,15 +70,21 @@ export default function Quest() {
     <View style={styles.container}>
       <Stack.Screen options={{ title: QuestData.title }} />
 
-      <Text>Quest Info page!</Text>
-      <Text>QuestId: {QuestData.id}</Text>
-      <Text>Title: {QuestData.title}</Text>
-      <Text>Description: {QuestData.description}</Text>
+      <Text style={{fontSize: 30}}>{QuestData.title}</Text>
       <Text>Duration: {QuestData.estimated_duration}</Text>
-      <Text>Tasks Type: {QuestData.tasks_type}</Text>
-      <Text>Tasks: {QuestData.tasks}</Text>
-      <Text>Completed: {completedQuest}</Text>
-      <Link href={'/quests/workout/'+QuestData.id+'?task=0'} style={styles.TaskButton}>Begin Short Tasks</Link>
+      <Text style={{margin: 10}}>{QuestData.description}</Text>
+
+      <Text style={{fontSize: 16, textDecorationLine: 'underline'}}>Tasks</Text>
+      {QuestData.tasks.map((Quest: any) => (
+        <Text>{Quest[0]} - {Quest[1]} secs</Text>
+      ))}
+
+      <Text style={{margin: 10}}>Completed: {completedQuest}</Text>
+
+      <View style={{flex: 1, flexDirection: 'row'}}>
+        <Link href={'/quests'} style={styles.TaskButton}>Back</Link>
+        <Link href={'/quests/workout/'+QuestData.id+'?task=0'} style={styles.TaskButton}>{ButtonText}</Link>
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -80,17 +96,21 @@ export default function Quest() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 100,
+    backgroundColor: "#fff",
   },
 
   TaskButton: {
     marginHorizontal: 10,
+    marginVertical: 10,
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderWidth: 1,
     borderRadius: 10,
+    height: 30,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    textAlign: 'center',
   }
 });
