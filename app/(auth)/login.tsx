@@ -7,9 +7,9 @@ import {
   View,
   Pressable,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  Image
 } from "react-native";
-import { Image } from "expo-image"
 
 import { useAuth } from "../../auth/auth";
 
@@ -29,7 +29,7 @@ export default function Login() {
         <Image
           style={styles.image}
           source={require("../../assets/images/fitquest.png")}
-          contentFit="contain"
+          resizeMode="contain"
         />
         <TextInput
           style={styles.textInput}

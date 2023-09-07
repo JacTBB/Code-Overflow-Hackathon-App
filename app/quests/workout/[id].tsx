@@ -59,7 +59,7 @@ export default function Workout() {
       else {
         setTimeLeft(timeLeft - 1);
       }
-    }, 1);
+    }, 1000);
     return () => clearInterval(intervalId);
   });
 

@@ -35,6 +35,7 @@ export default function Quest() {
     var MyQuestsDataString: any = await AsyncStorage.getItem('MyQuests')
     var MyQuestsData = MyQuestsDataString ? JSON.parse(MyQuestsDataString) : []
     MyQuestsData.push(id)
+    console.log(MyQuestsData)
     MyQuestsDataString = JSON.stringify(MyQuestsData)
     await AsyncStorage.setItem('MyQuests', MyQuestsDataString)
     Navigation.goBack()

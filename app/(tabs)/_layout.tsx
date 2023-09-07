@@ -11,7 +11,7 @@ export default function TabLayout() {
   // @ts-ignore
   const { user } = useAuth();
 
-  if (!user) {
+  if (user == '') {
     return <Redirect href="/login" />;
   }
 

@@ -3,9 +3,10 @@ import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import PocketBase from "pocketbase";
 
-const removeUser = async () => {
+const removeUser = async (setUser: any) => {
   try {
     await AsyncStorage.removeItem("user-key");
+    setUser('')
   } catch (e) {
     console.error(e);
   }
@@ -13,18 +14,20 @@ const removeUser = async () => {
   console.log("Done.");
 };
 
-export const storeUser = async (value: string) => {
+export const storeUser = async (value: string, setUser: any) => {
   try {
     await AsyncStorage.setItem("user-key", value);
+    setUser(value)
   } catch (e) {
     console.error(e);
   }
 };
 
-export const getUser = async () => {
+export const getUser = async (setUser: any) => {
   try {
     const value = await AsyncStorage.getItem("user-key");
     if (value !== null) {
+      setUser(value)
       return value;
     } else {
       return null;
@@ -41,7 +44,8 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider(props: any) {
   const pb = new PocketBase("https://pocketbase-codeoverflow.jactbb.com");
 
-  let user = getUser();
+  const [user, setUser] = useState('')
+  getUser(setUser)
 
   const register = async (email: string, password: string) => {
     pb.collection("users")
@@ -62,7 +66,8 @@ export function AuthProvider(props: any) {
     pb.collection("users")
       .authWithPassword(email, password)
       .then(() => {
-        storeUser("yes");
+        // storeUser("yes");
+        storeUser(pb.authStore.model!.id, setUser)
         router.replace("/");
       })
       .catch((error) => {
@@ -71,7 +76,7 @@ export function AuthProvider(props: any) {
   };
 
   const logout = () => {
-    removeUser();
+    removeUser(setUser);
     router.replace("/login");
   };
 

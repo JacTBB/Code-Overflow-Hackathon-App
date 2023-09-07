@@ -45,7 +45,7 @@ export default function Quests() {
   const MyQuestsData = []
   const FindQuestsData = []
   for (const Quest in QuestsData) {
-    if (MyQuestsStorage[`${Quest}`]) {
+    if (MyQuestsStorage.indexOf(QuestsData[Quest].id) >= 0) {
       MyQuestsData.push(QuestsData[Quest])
     }
     else {
@@ -66,7 +66,7 @@ export default function Quests() {
         }}
       />
 
-      <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white'}}>My Quests</Text>
+      <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white', paddingTop: 5}}>My Quests</Text>
       <FlatList
         data={MyQuestsData}
         renderItem={({item}) => <MyQuest Quest={item} />}

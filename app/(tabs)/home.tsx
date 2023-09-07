@@ -89,7 +89,7 @@ export default function Home() {
   const MyQuestsData = []
   const FindQuestsData = []
   for (const Quest in QuestsData) {
-    if (MyQuestsStorage[`${Quest}`]) {
+    if (MyQuestsStorage.indexOf(QuestsData[Quest].id) >= 0) {
       MyQuestsData.push(QuestsData[Quest])
     }
     else {

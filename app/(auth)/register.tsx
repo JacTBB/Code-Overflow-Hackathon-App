@@ -26,10 +26,10 @@ export default function Register() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.view}>
-        <Image
+      <Image
           style={styles.image}
           source={require("../../assets/images/fitquest.png")}
-          contentFit="contain"
+          resizeMode="contain"
         />
         <TextInput
           style={styles.textInput}

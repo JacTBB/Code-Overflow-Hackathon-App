@@ -1,6 +1,5 @@
-# Code Overflow App
+# Code Overflow Hackathon App (FitQuest)
 
-## To-do
-- Design an app icon [doc](https://docs.expo.dev/develop/user-interface/app-icons/) 
-- Design a splash screen [doc](https://docs.expo.dev/develop/user-interface/splash-screen/)
-- Authentication (using PocketBase)
+A hackathon by NYP SIT in September 2023.
+
+We built FitQuest, a fitness app that tracks your steps and has a quest system to encourage you to exercise.
