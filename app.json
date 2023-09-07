@@ -7,7 +7,7 @@
     "icon": "./assets/images/icon.jpeg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.jpeg",
+      "image": "./assets/images/fitquest.png",
       "resizeMode": "contain",
       "backgroundColor": "#b0e9be"
     },

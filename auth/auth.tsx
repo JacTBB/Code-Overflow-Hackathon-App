@@ -13,7 +13,7 @@ const removeUser = async () => {
   console.log("Done.");
 };
 
-export const storeUser = async (value: string) => {
+export const storeUser = async (value: any) => {
   try {
     await AsyncStorage.setItem("user-key", value);
   } catch (e) {
@@ -62,7 +62,8 @@ export function AuthProvider(props: any) {
     pb.collection("users")
       .authWithPassword(email, password)
       .then(() => {
-        storeUser("yes");
+        // @ts-ignore
+        storeUser(pb.authStore.model.id.id);
         router.replace("/");
       })
       .catch((error) => {
