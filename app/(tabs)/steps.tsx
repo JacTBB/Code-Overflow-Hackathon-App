@@ -54,7 +54,7 @@ export default function Steps() {
     <View style={styles.container}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: '#b0e9be' },
+          headerStyle: { backgroundColor: '#78BB7B' },
           headerTintColor: '#293241',
           headerTitleStyle: {
             fontWeight: 'bold',
