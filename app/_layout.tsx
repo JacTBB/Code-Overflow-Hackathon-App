@@ -1,10 +1,13 @@
 import { Slot } from 'expo-router';
-import { SessionProvider } from '../auth/auth';
+import { SessionProvider as AuthSessionProvider } from '../auth/auth';
+import { SessionProvider as StepSessionProvider } from '../components/StepContext';
 
 export default function Root() {
   return (
-    <SessionProvider>
-      <Slot />
-    </SessionProvider>
+    <AuthSessionProvider>
+      <StepSessionProvider>
+        <Slot />
+      </StepSessionProvider>
+    </AuthSessionProvider>
   );
 }

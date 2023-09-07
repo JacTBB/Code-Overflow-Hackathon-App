@@ -7,6 +7,8 @@ import { QuestsDataType, QuestsData } from "../../components/QuestsData";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CircularProgressBase } from "react-native-circular-progress-indicator";
 
+import { useSession } from '../../components/StepContext'
+
 
 
 type QuestProps = {
@@ -26,10 +28,16 @@ const MyQuest = ({Quest}: QuestProps) => (
 
 export default function Home() {
   const [PedomaterAvailability, SetPedomaterAvailability] = useState("");
-  const [StepCount, SetStepCount] = useState(0);
-  const [PreviousStepCount, SetPreviousStepCount] = useState(0);
-  const [SessionStepCount, SetSessionStepCount] = useState(0);
-  const [MyQuestsStorageString, setMyQuestsStorageString] = useState('')
+  const [MyQuestsStorageString, setMyQuestsStorageString] = useState('');
+
+  const {
+    // @ts-ignore
+    StepCount, SetStepCount,
+    // @ts-ignore
+    PreviousStepCount, SetPreviousStepCount,
+    // @ts-ignore
+    SessionStepCount, SetSessionStepCount
+  } = useSession()
 
   var SaveStepsTimeout: any
   const CurrentDate = new Date().toDateString()
@@ -55,7 +63,13 @@ export default function Home() {
   useEffect(() => {
     function SaveSteps() {
       SaveStepsTimeout = setTimeout(async () => {
+        console.log('SavingStepCount', PreviousStepCount, SessionStepCount, PreviousStepCount+SessionStepCount)
         await AsyncStorage.setItem('StepCount', (PreviousStepCount + SessionStepCount).toString())
+        
+        const CurrentDate = new Date()
+        await AsyncStorage.setItem(`StepCount-${CurrentDate.getFullYear()}-${CurrentDate.getMonth()}-${CurrentDate.getDate()}`,
+          (PreviousStepCount + SessionStepCount).toString()
+        )
       }, 5000)
     }
 
