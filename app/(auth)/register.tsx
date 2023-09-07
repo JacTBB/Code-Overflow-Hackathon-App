@@ -1,19 +1,18 @@
 import { Link } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
+import { useAuth } from '../../auth/auth';
 
-import { useAuth } from "../../auth/auth";
-
-export default function Login() {
+export default function Register() {
   // @ts-ignore
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
-      <Text>Login screen</Text>
+      <Text>Register screen</Text>
       <TextInput placeholder="Email" onChangeText={(text) => setEmail(text)} />
       <TextInput
         placeholder="Password"
@@ -22,12 +21,12 @@ export default function Login() {
       />
       <Pressable
         onPress={() => {
-          login(email, password);
+          register(email, password);
         }}
       >
-        <Text>Login</Text>
+        <Text>Register</Text>
       </Pressable>
-      <Link href="/register">Register</Link>
+      <Link href="/login">Go back to login</Link>
     </View>
   );
 }
