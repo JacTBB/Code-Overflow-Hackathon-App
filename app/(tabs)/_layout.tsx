@@ -1,12 +1,20 @@
-import { Tabs } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Tabs, Redirect } from "expo-router";
 import { Entypo, Foundation, FontAwesome5, Ionicons } from '@expo/vector-icons';
+
+import { useSession } from '../../auth/auth';
 
 
 
 const Color = 'rgb(80, 80, 80)'
 
 export default function TabLayout() {
+  // @ts-ignore
+  const { session } = useSession();
+
+  if (session == '') {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <Tabs screenOptions={{
       tabBarStyle: { position: 'absolute', backgroundColor: '#fff' },

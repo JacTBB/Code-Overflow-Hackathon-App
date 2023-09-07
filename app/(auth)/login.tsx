@@ -1,12 +1,17 @@
-// UNFINISHED
+import { router } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
-
 import PocketBase from "pocketbase";
+
+import { useSession } from '../../auth/auth';
+
+
 
 export default function Login() {
   const pb = new PocketBase("https://pocketbase-codeoverflow.jactbb.com");
 
+  // @ts-ignore
+  const { signIn } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,9 +20,11 @@ export default function Login() {
       "codeoverflow@jactbb.com",
       "felix@punggol!"
     );
-    console.log(authData)
+    console.log(authData);
     console.log(pb.authStore.isValid);
     console.log(pb.authStore);
+    signIn();
+    router.replace('/')
   };
 
   return (
