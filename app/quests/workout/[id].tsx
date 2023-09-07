@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Audio, ResizeMode } from 'expo-av';
 import VideoPlayer from 'expo-video-player'
-import { QuestsDataType, QuestsData, TaskVideos } from "../../../components/QuestsData";
+import { QuestsDataType, QuestsData } from "../../../components/QuestsData";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -95,10 +95,14 @@ export default function Workout() {
             shouldPlay: true,
             resizeMode: ResizeMode.CONTAIN,
             source: {
-              uri: `${QuestData.workout_video || TaskVideos[QuestData.title]}`,
+              uri: `${QuestData.workout_video}`,
             },
+            isMuted: true,
+            isLooping: true,
+            useNativeControls: false
           }}
-          style={{height: 300}}
+          defaultControlsVisible={false}
+          style={{height: 200}}
         />
       </View>
 

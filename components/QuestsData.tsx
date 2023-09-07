@@ -9,10 +9,6 @@ export type QuestsDataType = {
   tasks: any;
 };
 
-export const TaskVideos: Record<string, string> = {
-  "Rest": "https://ncs.jactbb.com/s/4nKzwra2LY3KS6X/download",
-}
-
 export const QuestsData: Record<string, QuestsDataType> = {
   '1': {
     id: '1',
@@ -61,8 +57,8 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '3',
     title: '10 Min HITT Cardio',
     description: 'HITT Cardio Workout',
-    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
-    workout_video: '',
+    card_image: 'https://media.istockphoto.com/id/1225999034/vector/fitness-instructor-service-flat-color-vector-illustration.jpg?s=612x612&w=0&k=20&c=D1PzDVWE5IVVHrYc5yYgLYr8pQpCmdugeZp_BQHhAJA=',
+    workout_video: 'https://ncs.jactbb.com/s/9qpHyc68AMj9jB9/download',
     estimated_duration: '10 mins',
     tasks_type: 'short',
     tasks: [
@@ -90,54 +86,44 @@ export const QuestsData: Record<string, QuestsDataType> = {
   },
   '4': {
     id: '4',
-    title: 'Quest 4',
-    description: 'Description',
-    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
-    workout_video: '',
-    estimated_duration: '30 mins',
+    title: '4 Min Tabata',
+    description: '4 Min Fat Burning Workout',
+    card_image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2021_07/1676198/tabata-training-te-main-210218.jpg',
+    workout_video: 'https://ncs.jactbb.com/s/Ft8xNt3M8P6Jj35/download',
+    estimated_duration: '4 mins',
     tasks_type: 'short',
     tasks: [
-      ["Squats", 100],
-      ["Running", 60],
+      ["Rest", 12],
+      ["Squats Lateral Walk", 18],
+      ["Rest", 8],
+      ["Floor Pushups", 18],
+      ["Rest", 8],
+      ["Crab Toe Touch", 18],
+      ["Rest", 8],
+      ["Reverse Plank", 18],
+      ["Rest", 8],
+      ["Lateral Running Floor Touches", 18],
+      ["Rest", 8],
+      ["Curtsy Lunges", 18],
+      ["Rest", 8],
+      ["Pogo Squats", 18],
+      ["Rest", 8],
+      ["Dead Bug", 18],
     ]
   },
   '5': {
     id: '5',
-    title: 'Quest 5',
+    title: 'Welcome Quest',
     description: 'Description',
     card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
-    workout_video: '',
-    estimated_duration: '30 mins',
+    workout_video: 'https://ncs.jactbb.com/s/NfDqBLCXwKtiGNo/download',
+    estimated_duration: '1 min',
     tasks_type: 'short',
     tasks: [
-      ["Squats", 100],
-      ["Running", 60],
-    ]
-  },
-  '6': {
-    id: '6',
-    title: 'Quest 6',
-    description: 'Description',
-    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
-    workout_video: '',
-    estimated_duration: '30 mins',
-    tasks_type: 'short',
-    tasks: [
-      ["Squats", 100],
-      ["Running", 60],
-    ]
-  },
-  '7': {
-    id: '7',
-    title: 'Quest 7',
-    description: 'Description',
-    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
-    workout_video: '',
-    estimated_duration: '30 mins',
-    tasks_type: 'short',
-    tasks: [
-      ["Squats", 100],
-      ["Running", 60],
+      ["Rest", 5],
+      ["Squats", 20],
+      ["Rest", 5],
+      ["Squats", 20],
     ]
   },
 }

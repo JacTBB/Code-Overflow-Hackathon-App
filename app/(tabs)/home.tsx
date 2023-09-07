@@ -63,7 +63,6 @@ export default function Home() {
   useEffect(() => {
     function SaveSteps() {
       SaveStepsTimeout = setTimeout(async () => {
-        console.log('SavingStepCount', PreviousStepCount, SessionStepCount, PreviousStepCount+SessionStepCount)
         await AsyncStorage.setItem('StepCount', (PreviousStepCount + SessionStepCount).toString())
         
         const CurrentDate = new Date()
