@@ -4,10 +4,10 @@
     "slug": "code-overflow-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.jpeg",
+    "icon": "./assets/images/fitquest.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.jpeg",
+      "image": "./assets/images/fitquest.png",
       "resizeMode": "contain",
       "backgroundColor": "#b0e9be"
     },
@@ -15,20 +15,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jactbb.codeoverflowapp"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/icon.jpeg",
+        "foregroundImage": "./assets/images/fitquest.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jactbb.codeoverflowapp"
     },
     "web": {
-      "favicon": "./assets/images/icon.png"
+      "favicon": "./assets/images/fitquest.png"
     },
     "plugins": [
       "expo-router"
     ],
-    "scheme": "fitquest"
+    "scheme": "fitquest",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c6a8145c-f796-4e88-bd90-de58b77a065e"
+      }
+    }
   }
 }

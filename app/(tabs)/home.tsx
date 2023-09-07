@@ -110,7 +110,7 @@ export default function Home() {
         }}
       />
 
-      <Text style={{color: 'white', fontSize: 15, paddingTop: 5}}>{CurrentDate}</Text>
+      <Text style={{color: 'white', fontSize: 15, paddingTop: 25}}>{CurrentDate}</Text>
       <Text style={{color: 'white', fontSize: 40}}>Summary</Text>
 
       <View style={{height: 300}}>

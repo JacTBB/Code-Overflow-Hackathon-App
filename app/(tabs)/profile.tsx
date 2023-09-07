@@ -1,14 +1,16 @@
-import { Stack, Link } from "expo-router";
-import { useEffect, useState, useRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Stack } from "expo-router";
+import { useEffect, useState, useContext } from "react";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useAuth } from "../../auth/auth";
+import PocketBase from "pocketbase";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 export default function Profile() {
+  const pb = new PocketBase("https://pocketbase-codeoverflow.jactbb.com");
+
   // @ts-ignore
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const [points, setPoints] = useState(0)
 
   useEffect(() => {
@@ -36,17 +38,16 @@ export default function Profile() {
         }}
       />
 
-      <Text style={{ color: "white" }}>Profile page!</Text>
+      <Text style={{color: 'white', fontSize: 20}}>Quest Points: {points}</Text>
 
-      <Text>Quest Points: {points}</Text>
-
-      <Text
+      <Pressable
+        style={styles.pressable}
         onPress={() => {
           logout();
         }}
       >
-        Sign Out
-      </Text>
+        <Text>Sign Out</Text>
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
@@ -58,5 +59,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#222",
     alignItems: "center",
     justifyContent: "center",
+  },
+  pressable: {
+    backgroundColor: "#78BB7B",
+    padding: 15,
   },
 });
