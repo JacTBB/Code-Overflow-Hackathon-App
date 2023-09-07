@@ -1,4 +1,4 @@
-import { Stack, useGlobalSearchParams, Redirect } from 'expo-router';
+import { Stack, useGlobalSearchParams, useNavigation } from 'expo-router';
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
@@ -9,6 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Workout() {
   const { id, task } = useGlobalSearchParams();
+  const Navigation = useNavigation()
   const QuestData = QuestsData[`${id}`];
   const TotalTasks = QuestData.tasks.filter((t: any) => t[0] != 'rest').length;
   const [taskId_NoRest, setTaskId_NoRest] = useState(0);
@@ -27,6 +28,9 @@ export default function Workout() {
         setCompleted(1)
       }, 3000);
       return
+    }
+    else {
+      setCompleted(0)
     }
 
     const intervalId = setInterval(() => {
@@ -48,7 +52,7 @@ export default function Workout() {
   });
 
   if (((taskId+1) >= QuestData.tasks.length)&&(timeLeft == 0)) {
-    if (completed == 1) return <Redirect href={'/quests/'+id} />
+    if (completed == 1) Navigation.goBack()
 
     return (
       <View style={styles.container}>

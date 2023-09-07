@@ -1,6 +1,6 @@
 import { Stack, Link, useFocusEffect } from 'expo-router';
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { QuestsDataType, QuestsData } from "../../components/QuestsData";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,17 +13,19 @@ type QuestProps = {
 
 const MyQuest = ({Quest}: QuestProps) => (
   <View style={styles.QuestCard}>
-    <Text>{Quest.title}</Text>
-    <Text>{Quest.card_image}</Text>
-    <Link href={'/quests/'+Quest.id} style={styles.QuestButton}>Continue</Link>
+    <ImageBackground source={{uri: Quest.card_image}} style={styles.QuestImage} imageStyle={{borderRadius: 10, opacity: 0.8}}>     
+      <Text style={styles.QuestTitle}>{Quest.title}</Text>
+      <Link href={'/quests/'+Quest.id} style={styles.QuestButton}>Continue</Link>
+    </ImageBackground>
   </View>
 );
 
 const FindQuest = ({Quest}: QuestProps) => (
   <View style={styles.QuestCard}>
-    <Text>{Quest.title}</Text>
-    <Text>{Quest.card_image}</Text>
-    <Link href={'/quests/'+Quest.id} style={styles.QuestButton}>View</Link>
+    <ImageBackground source={{uri: Quest.card_image}} style={styles.QuestImage} imageStyle={{borderRadius: 10, opacity: 0.8}}>     
+      <Text style={styles.QuestTitle}>{Quest.title}</Text>
+      <Link href={'/quests/'+Quest.id} style={styles.QuestButton}>View</Link>
+    </ImageBackground>
   </View>
 );
 
@@ -88,23 +90,45 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#222",
     paddingHorizontal: 10,
+    paddingBottom: 60,
+  },
+
+  QuestImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 10,
   },
 
   QuestCard: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#aaa",
     marginVertical: 3,
-    padding: 10,
+    padding: 2,
     borderRadius: 10,
   },
 
+  QuestTitle: {
+    padding: 10,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textShadowColor: 'gray',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 5,
+  },
+
   QuestButton: {
+    alignSelf: 'flex-end',
     marginHorizontal: 10,
+    marginVertical: 10,
     paddingHorizontal: 10,
     paddingVertical: 3,
-    borderWidth: 1,
+    width: 100,
     borderRadius: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });

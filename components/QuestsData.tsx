@@ -13,7 +13,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '1',
     title: 'Quest 1 (Daily)',
     description: 'Description',
-    card_image: '(img_url)',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
@@ -42,7 +42,7 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '2',
     title: 'Quest 2',
     description: 'Description',
-    card_image: '(img_url)',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
@@ -54,7 +54,55 @@ export const QuestsData: Record<string, QuestsDataType> = {
     id: '3',
     title: 'Quest 3',
     description: 'Description',
-    card_image: '(img_url)',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    estimated_duration: '30 mins',
+    tasks_type: 'short',
+    tasks: [
+      ["squats", 100],
+      ["running", 60],
+    ]
+  },
+  '4': {
+    id: '4',
+    title: 'Quest 4',
+    description: 'Description',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    estimated_duration: '30 mins',
+    tasks_type: 'short',
+    tasks: [
+      ["squats", 100],
+      ["running", 60],
+    ]
+  },
+  '5': {
+    id: '5',
+    title: 'Quest 5',
+    description: 'Description',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    estimated_duration: '30 mins',
+    tasks_type: 'short',
+    tasks: [
+      ["squats", 100],
+      ["running", 60],
+    ]
+  },
+  '6': {
+    id: '6',
+    title: 'Quest 6',
+    description: 'Description',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
+    estimated_duration: '30 mins',
+    tasks_type: 'short',
+    tasks: [
+      ["squats", 100],
+      ["running", 60],
+    ]
+  },
+  '7': {
+    id: '7',
+    title: 'Quest 7',
+    description: 'Description',
+    card_image: 'https://cdn.discordapp.com/attachments/1139833246935433267/1149224142898479135/image.png',
     estimated_duration: '30 mins',
     tasks_type: 'short',
     tasks: [
