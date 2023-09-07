@@ -1,7 +1,7 @@
 import { Tabs, Redirect } from "expo-router";
 import { Entypo, Foundation, FontAwesome5, Ionicons } from '@expo/vector-icons';
 
-import { useSession } from '../../auth/auth';
+import { useAuth } from '../../auth/auth';
 
 
 
@@ -9,9 +9,9 @@ const Color = 'rgb(80, 80, 80)'
 
 export default function TabLayout() {
   // @ts-ignore
-  const { session } = useSession();
+  const { user } = useAuth();
 
-  if (session == '') {
+  if (!user) {
     return <Redirect href="/login" />;
   }
 

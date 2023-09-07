@@ -7,15 +7,15 @@ import {
   View,
   Pressable,
   KeyboardAvoidingView,
-  Platform
+  Platform,
 } from "react-native";
 import { Image } from "expo-image"
 
 import { useAuth } from "../../auth/auth";
 
-export default function Login() {
+export default function Register() {
   // @ts-ignore
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,13 +45,13 @@ export default function Login() {
         <Pressable
           style={styles.pressable}
           onPress={() => {
-            login(email, password);
+            register(email, password);
           }}
         >
-          <Text>Login</Text>
+          <Text>Register</Text>
         </Pressable>
         <Pressable style={styles.pressable}>
-          <Link href="/register">Register</Link>
+          <Link href="/login">Go back to login</Link>
         </Pressable>
       </View>
     </KeyboardAvoidingView>

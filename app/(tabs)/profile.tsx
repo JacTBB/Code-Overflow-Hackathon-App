@@ -1,33 +1,38 @@
-import { Stack, Link } from 'expo-router';
+import { Stack, Link } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-
-
+import { useAuth } from "../../auth/auth";
 
 export default function Profile() {
+  // @ts-ignore
+  const { logout } = useAuth();
+
   return (
     <View style={styles.container}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: '#78BB7B' },
-          headerTintColor: '#293241',
+          headerStyle: { backgroundColor: "#78BB7B" },
+          headerTintColor: "#293241",
           headerTitleStyle: {
-            fontWeight: 'bold',
+            fontWeight: "bold",
           },
           headerTitle: "FitQuest - Profile",
         }}
       />
 
-      <Text style={{ color: 'white' }}>Profile page!</Text>
+      <Text style={{ color: "white" }}>Profile page!</Text>
 
-      <Link href={'/login'} style={{ color: 'white', borderWidth: 1, borderColor: 'white', margin: 5, padding: 5 }}>Login</Link>
-
+      <Text
+        onPress={() => {
+          logout();
+        }}
+      >
+        Sign Out
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
