@@ -29,7 +29,6 @@ export default function Register() {
       <Image
           style={styles.image}
           source={require("../../assets/images/fitquest.png")}
-          resizeMode="contain"
         />
         <TextInput
           style={styles.textInput}

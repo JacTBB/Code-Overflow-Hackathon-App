@@ -23,11 +23,13 @@ export default function Quest() {
     (async () => {
       const MyQuestsDataString: any = await AsyncStorage.getItem('MyQuests')
       const MyQuestsData = MyQuestsDataString ? JSON.parse(MyQuestsDataString) : []
-      setMyQuest(MyQuestsData[`${id}`] ? 'true': 'false')
+      // @ts-ignore
+      setMyQuest(MyQuestsData.indexOf(id >= 0) ? 'true': 'false')
 
       const CompletedQuestsString: any = await AsyncStorage.getItem('CompletedQuests')
       const CompletedQuests = CompletedQuestsString ? JSON.parse(CompletedQuestsString) : {}
-      setCompletedQuest(CompletedQuests[`${id}`] ? 'Yes' : 'No')
+      // @ts-ignore
+      setCompletedQuest(CompletedQuests.indexOf(id >= 0) ? 'Yes' : 'No')
     })()
   });
 
